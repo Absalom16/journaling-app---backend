@@ -26,10 +26,16 @@ router.post("/entries", async (req, res) => {
 
 router.get("/entries", async (req, res) => {
   const userId = req.user.id;
+  const { category } = req.query;
 
   try {
-    const entries = await JournalEntry.findAll({ where: { userId } });
-    res.json(entries);
+    if (category) {
+      const entries = await JournalEntry.findAll({ where: { category } });
+      res.json(entries);
+    } else {
+      const entries = await JournalEntry.findAll({ where: { userId } });
+      res.json(entries);
+    }
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch entries" });
   }

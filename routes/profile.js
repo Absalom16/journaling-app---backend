@@ -14,8 +14,20 @@ router.put("/", async (req, res) => {
   try {
     const user = await User.findOne({ where: { id } });
 
+    if (username == "" || password == "") {
+      console.log(username)
+      return res
+        .status(404)
+        .json({ message: "Username or password cannot be empty" });
+    }
+
     if (!user) {
       return res.status(404).json({ message: "User not found" });
+    }
+
+    const existingUser = await User.findOne({ where: { username } });
+    if (existingUser) {
+      return res.status(404).json({ message: "User already exists" });
     }
 
     user.username = username;

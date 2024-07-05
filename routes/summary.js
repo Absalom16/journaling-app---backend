@@ -19,13 +19,10 @@ router.get("/", async (req, res) => {
     const today = new Date();
     if (period === "daily") {
       startDate = new Date(today.setDate(today.getDate() - 1));
-      console.log(startDate);
     } else if (period === "weekly") {
       startDate = new Date(today.setDate(today.getDate() - 7));
-      console.log(startDate);
     } else if (period === "monthly") {
       startDate = new Date(today.setMonth(today.getMonth() - 1));
-      console.log(startDate);
     } else {
       return res.status(400).json({ message: "Invalid period specified" });
     }
@@ -39,8 +36,6 @@ router.get("/", async (req, res) => {
         },
       },
     });
-
-    console.log(entries);
 
     // Process summary
     const totalEntries = entries.length;
