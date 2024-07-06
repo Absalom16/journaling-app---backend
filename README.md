@@ -6,7 +6,6 @@ This is a Node.js backend service for a journaling application. The service prov
 
 - [Features](#features)
 - [Installation](#installation)
-- [Configuration](#configuration)
 - [Usage](#usage)
 - [API Endpoints](#api-endpoints)
 - [License](#license)
