@@ -12,13 +12,17 @@ router.post("/entries", async (req, res) => {
   const userId = req.user.id;
 
   try {
-    const entry = await JournalEntry.create({
-      title,
-      content,
-      category,
-      userId,
-    });
-    res.status(201).json(entry);
+    if (!title || !content || !category) {
+      res.status(404).json({ error: "Invalid entry" });
+    } else {
+      const entry = await JournalEntry.create({
+        title,
+        content,
+        category,
+        userId,
+      });
+      res.status(201).json(entry);
+    }
   } catch (error) {
     res.status(500).json({ error: "Failed to create entry" });
   }
