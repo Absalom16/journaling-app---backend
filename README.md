@@ -55,7 +55,7 @@ This is a Node.js backend service for a journaling application. The service prov
 
 ### Running the Server
 
-To start the server, run the following command:
+To start the server, start your mySQL server first and run the following command:
 
 ```bash
 node index.js
