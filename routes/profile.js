@@ -15,7 +15,6 @@ router.put("/", async (req, res) => {
     const user = await User.findOne({ where: { id } });
 
     if (username == "" || password == "") {
-      console.log(username)
       return res
         .status(404)
         .json({ message: "Username or password cannot be empty" });

@@ -1,4 +1,3 @@
-// routes/summary.js
 const express = require("express");
 const { Op } = require("sequelize");
 const JournalEntry = require("../models/JournalEntry");
@@ -10,7 +9,7 @@ router.use(authenticateToken);
 
 router.get("/", async (req, res) => {
   const { period } = req.query;
-  const userId = req.user.id; // Assuming user ID is set in the verifyToken middleware
+  const userId = req.user.id;
 
   try {
     let startDate;
@@ -41,7 +40,7 @@ router.get("/", async (req, res) => {
     const totalEntries = entries.length;
     const categories = [...new Set(entries.map((entry) => entry.category))];
 
-    res.json({ totalEntries, categories });
+    res.json({ totalEntries, categories, entries });
   } catch (error) {
     res.status(500).json({ message: "Error fetching summary", error });
   }

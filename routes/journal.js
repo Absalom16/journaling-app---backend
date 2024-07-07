@@ -1,4 +1,3 @@
-// routes/journal.js
 const express = require("express");
 const JournalEntry = require("../models/JournalEntry");
 const authenticateToken = require("../middleware/auth");

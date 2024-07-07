@@ -103,7 +103,7 @@ The server will start on the port specified in the `.env` file (default is 3000)
 
 - **GET** `api/summary/`: Get all journal entries based on specific period.
 
-- Response: `{ totalEntries, categories }`
+- Response: `{ totalEntries, categories, entries }`
 - Headers: `{ "Authorization": "Bearer jwt_token" }`
 
 ### Profile
